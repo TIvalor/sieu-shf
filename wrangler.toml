@@ -1,0 +1,9 @@
+name = "sieu-shf-api"
+main = "worker/worker.js"
+compatibility_date = "2026-11-06"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGINS = "https://tivalor.github.io"
+
+# GEOAPIFY_API_KEY se agrega como Secret en Cloudflare, nunca aquí.

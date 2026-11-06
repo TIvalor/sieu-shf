@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-06T17:37:34.174Z",
+  "passed": 9,
+  "checks": [
+    "Funciona bajo /sieu-shf/ como GitHub Pages",
+    "API separada con CORS",
+    "Sin captura de clave en navegador",
+    "Tres candidatos",
+    "Mapa por proxy",
+    "Clave ausente de peticiones del navegador y exportación",
+    "Sin peticiones a Google ni Sites",
+    "Recarga conserva disponibilidad de servidor",
+    "Móvil sin desbordamiento ni errores JS"
+  ],
+  "note": "Worker, clave, datos e imágenes simulados. Falta despliegue en cuentas del propietario.",
+  "upstreamCalls": 13
+}

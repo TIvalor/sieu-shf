@@ -1,0 +1,2 @@
+import {readFile,writeFile} from 'node:fs/promises';
+const root=new URL('../',import.meta.url);const core=await readFile(new URL('core.mjs',root),'utf8');const geo=(await readFile(new URL('geoapify.mjs',root),'utf8')).replace(/^import .*?;\r?\n/,'');const handler=await readFile(new URL('worker/handler.mjs',root),'utf8');await writeFile(new URL('worker/worker.js',root),core+'\n'+geo+'\n'+handler);console.log('Worker autónomo generado, sin claves ni dependencia de Sites.');
