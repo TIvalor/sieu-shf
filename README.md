@@ -1,103 +1,82 @@
-# SIEU-SHF — GitHub Pages + Cloudflare Workers Free
+# SIEU-SHF — DENUE principal y mapa Geoapify
 
-Aplicación pública de equipamiento urbano para avalúos de vivienda. Esta versión 0.5.0 se publica desde GitHub y no depende de Google Cloud, Firebase, Google Maps ni Sites. La clave de Geoapify permanece como Secret del Worker, no en GitHub ni en el navegador de los visitantes.
+Versión 0.6.0. Aplicación pública de equipamiento urbano para avalúos de vivienda, alojada en GitHub Pages y conectada a Cloudflare Workers Free. Sin Google Cloud, Google Maps, Firebase ni dependencia de Sites.
 
-## Arquitectura y costo
+## Comportamiento publicado
 
-- GitHub Pages: página estática pública bajo la cuenta TIvalor, igual que el frontend MKWKO-score-web.
-- Cloudflare Workers Free: consultas Geoapify y teselas del mapa; clave privada en el alojamiento.
-- Geoapify Free: fuente de candidatos y mapa OpenStreetMap con atribución.
-- Dominio propio: innecesario. Se usan subdominios github.io y workers.dev.
+- INEGI DENUE es la fuente principal de candidatos. 13 conceptos tienen consulta textual configurada; nueve requieren fuente específica o carga/captura manual.
+- Geoapify sirve únicamente el mapa complementario OpenStreetMap. No se utiliza su búsqueda Places en el flujo publicado.
+- El bloque de configuración Geoapify se retiró del HTML; los visitantes no introducen claves ni ven instrucciones de alojamiento.
+- Tres opciones cercanas por categoría, expansión hasta veinte, radios 2 km general y 800 m transporte.
+- Fuente, ID, CLEE, fecha, distancia y revisión humana. Los resultados vacíos y errores no se interpretan como inexistencia.
+- Exportación JSON/CSV/tabla, sesión en memoria y propuesta de nivel SHF condicionada a evidencia suficiente y regla documentada validada.
 
-Objetivo de operación: $0 usando solo planes Free y dentro de sus cuotas. No es uso ilimitado. Al revisar el 6 de noviembre de 2026: Geoapify anuncia 3,000 créditos/día y hasta 5 peticiones/segundo; Workers Free anuncia 100,000 solicitudes/día. Los créditos de Places y mapa no son idénticos: revise el consumo de su proyecto. No seleccione planes pagados ni ampliaciones de facturación para este entregable.
+**Para activar la conexión y desplegar el código del Worker siga [CONEXION-DENUE.md](CONEXION-DENUE.md).**
 
-Fuentes: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site ; https://developers.cloudflare.com/workers/platform/pricing/ ; https://www.geoapify.com/pricing/ ; https://www.geoapify.com/pricing-details/.
+## Publicación actual
 
-## 1. Repositorio GitHub
+- Repositorio: https://github.com/TIvalor/sieu-shf
+- Página: https://tivalor.github.io/sieu-shf/
+- API configurada: https://sieu-shf-api.mario9407.workers.dev
 
-1. En https://github.com/new cree un repositorio público en TIvalor con nombre sieu-shf. No use el repositorio de Mario Kart para este proyecto.
-2. Suba el contenido completo de esta carpeta a la raíz del repositorio: index.html debe quedar directamente en la raíz, no dentro de otra carpeta sieu-shf-github.
-3. Incluya config.js, los módulos .mjs, style.css, vendor/ y .nojekyll. También puede subir worker/, scripts/, test/ y esta documentación: no contienen credenciales reales.
-4. En Settings > Pages seleccione Deploy from a branch, main, / (root), Save.
-5. Espere la publicación. La dirección prevista, si mantiene esos nombres, es https://tivalor.github.io/sieu-shf/ . Esta dirección es prevista, no prueba de que ya esté publicada.
+config.js contiene únicamente la URL pública del Worker, nunca claves. index.html debe permanecer en la raíz del repositorio, con rutas relativas y .nojekyll. GitHub Pages se configura con Settings > Pages > Deploy from a branch > main > / (root).
 
-El paquete funciona sin configurar la API para demo ficticia y captura manual. No publique claves de servidor, .env, .dev.vars, archivos cifrados DPAPI ni claves privadas. GitHub Pages no ejecuta server.mjs ni oculta secretos de backend.
+El Worker se publica desde worker/worker.js, archivo autónomo generado. Si Cloudflare está conectado a GitHub, despliegue main; si usa el editor manual, sustituya todo el código con ese archivo y pulse Deploy. Cambiar GitHub no actualiza automáticamente un Worker creado mediante copia manual.
 
-## 2. Crear el Worker gratuito
+## Configuración privada
 
-1. Abra https://dash.cloudflare.com/ con su cuenta. Use Workers Free.
-2. Entre a Workers & Pages y cree una aplicación Worker. La guía oficial permite empezar con Hello World o conectar un repositorio Git.
-3. Nombre recomendado: sieu-shf-api. Publique el ejemplo inicial para obtener el subdominio workers.dev.
-4. Abra Edit code y reemplace el código inicial por el contenido COMPLETO de worker/worker.js de este paquete. Es un archivo autónomo que no necesita imports ni instalación de paquetes. Guarde y despliegue.
-5. Copie la URL real que Cloudflare asignó al Worker. No comparta la clave: solo necesitamos esa URL pública.
+En Cloudflare, Worker sieu-shf-api > Settings > Variables and Secrets:
 
-Alternativa con integración Git: seleccione este repositorio y wrangler.toml; el entrypoint ya es worker/worker.js. Los pasos exactos del panel pueden variar. Referencia: https://developers.cloudflare.com/workers/get-started/dashboard/.
+| Nombre | Tipo | Función |
+|---|---|---|
+| DENUE_TOKEN | Secret | Consulta principal INEGI DENUE |
+| GEOAPIFY_API_KEY | Secret | Imágenes del mapa complementario |
+| ALLOWED_ORIGINS | Text | https://tivalor.github.io |
 
-## 3. Guardar la clave de Geoapify como Secret
+Conserve la clave Geoapify existente. Añada o actualice únicamente DENUE_TOKEN con la clave correcta de esa API. Pulse Deploy. Las credenciales no se guardan en el repositorio, no se entregan al navegador y no forman parte del expediente exportado.
 
-Use una clave de Geoapify creada para servidor, separada de la clave de navegador. Una restricción Allowed origins o HTTP referrer de navegador puede bloquear llamadas de servidor. Cloudflare no proporciona aquí una IP de salida fija; no invente una restricción por IP. Mantenga privada la clave y controle la cuota Free en Geoapify.
+/api/config informa solo presencia de variables. denueConfigured=true no certifica que INEGI acepte el token: compruébelo con una consulta de Bancos. La guía describe los errores de credencial rechazada, formato y red.
 
-1. En Cloudflare abra Workers & Pages > su Worker > Settings.
-2. En Variables and Secrets pulse Add.
-3. Tipo: Secret. Nombre EXACTO: GEOAPIFY_API_KEY. Valor: su clave Geoapify.
-4. Añada otra variable, tipo Text, nombre ALLOWED_ORIGINS, valor https://tivalor.github.io (sin ruta /sieu-shf/ y sin barra final).
-5. Pulse Deploy para aplicar. Si publica bajo otra cuenta GitHub, cambie ese origen para que corresponda al dominio github.io de esa cuenta.
+## Costo objetivo $0
 
-Referencia oficial: https://developers.cloudflare.com/workers/configuration/secrets/.
+Use repositorio público GitHub Free, Cloudflare Workers Free y Geoapify Free, sin dominio propio ni planes pagados. El servicio está sujeto a cuotas. Al revisar el 6 de noviembre de 2026: Geoapify anuncia 3,000 créditos/día y hasta 5 solicitudes/segundo; Workers Free anuncia 100,000 solicitudes/día. DENUE se consulta mediante token del servicio INEGI. No se garantiza disponibilidad ilimitada.
 
-La clave se ingresa directamente en Cloudflare. No la pegue en el chat ni en config.js, wrangler.toml, README, Issues, GitHub Secrets usados para generar JavaScript público, ni archivos subidos al repositorio.
+El Worker conserva caché de consultas de 90 segundos, caché de imágenes según cabeceras y límites temporales por IP/instancia. CORS no autentica clientes fuera del navegador y no sustituye la cuota global. Mantenga los planes Free y supervise el consumo.
 
-## 4. Conectar la página con el Worker
+## Uso
 
-Edite únicamente config.js, sustituyendo la cadena vacía por la URL real del Worker, sin barra final:
+1. Abra la página y cree un expediente nuevo con sus coordenadas.
+2. Seleccione una categoría compatible, por ejemplo Bancos, y pulse Consultar DENUE.
+3. Abra Mostrar mapa para revisar el entorno. Un clic del mapa prepara coordenadas pendientes de aplicar.
+4. Valide la correspondencia, ubicación y operación del candidato; documente referencia, responsable, fecha y alcance.
+5. Exporte antes de recargar o cerrar. No hay base compartida de expedientes ni sincronización entre usuarios.
 
-```javascript
-window.SIEU_CONFIG = {
-  apiBase: "https://URL-REAL-DE-SU-WORKER.workers.dev"
-};
-```
+Las distancias son geodésicas esféricas aproximadas, no recorridos viales. El mapa es de calles, no satelital. La cartografía no demuestra que un establecimiento opere. Los 22 conceptos y las reglas de nivel requieren revisión profesional; el sistema no tiene aval institucional SHF.
 
-El valor anterior es un ejemplo de estructura, no una URL asignada. Esta URL no es una credencial. Guarde el cambio en main y espere que Pages vuelva a publicar.
-
-## 5. Prueba final
-
-1. Abra la dirección de Pages en ventana privada u otro equipo.
-2. Debe mostrar Geoapify: servidor configurado. No debe pedir API key a los visitantes.
-3. Pulse Activar mapa Geoapify: las teselas pasan por el Worker, sin clave en la URL del navegador.
-4. Capture coordenadas del inmueble, GPS estando en él o un punto del mapa. Confirme con Aplicar ubicación.
-5. Seleccione Geoapify, Bancos, Hasta 3 cercanas y consulte.
-6. Para ampliar, seleccione Hasta 20 y consulte la misma categoría. Valide un candidato y exporte JSON/CSV.
-7. Exporte antes de recargar. Los expedientes siguen en memoria del navegador, sin sincronización entre usuarios ni base de datos compartida.
-
-Si falla: /api/config en la URL del Worker informa solo disponibilidad, nunca la clave. Un 403 en llamadas desde la página indica revisar ALLOWED_ORIGINS; un 503 indica Secret ausente; un 429 indica frecuencia/cuota; un 502 requiere revisar Geoapify, clave de servidor y cuota. Una consulta fallida no prueba inexistencia.
-
-## Funciones y límites
-
-22 conceptos; radios generales 2 km y transporte 800 m; tres candidatos por proximidad, expansión, fuentes, revisión humana, estados de ausencia/no localizado/conflicto y exportaciones. 17 conceptos tienen correspondencia Geoapify orientativa; cinco siguen por fuente específica/manual. Primaria/secundaria/preparatoria y tipo de transporte requieren validar clasificación. El mapa es de calles, no satelital.
-
-No se asigna nivel SHF sin evidencias completas y regla documentada validada. El sistema no tiene aval institucional ni certifica vigencia de establecimientos. Distancia geodésica esférica aproximada, no recorrido vial.
-
-El Worker añade caché de consultas de 90 segundos, caché de teselas según cabeceras, separación de orígenes y límites temporales por IP/instancia. CORS no autentica clientes ajenos al navegador; estos controles no sustituyen la cuota global del proveedor. Mantenga ambos servicios en Free para el objetivo $0. No se configuró ninguna suscripción pagada.
-
-## Pruebas
+## Desarrollo y pruebas
 
 ```text
 npm test
+npm run build:worker
 ```
 
-55 pruebas unitarias/de contrato sin dependencias. La prueba de navegador usa Playwright temporal:
+La compilación une core.mjs, worker/denue.mjs y worker/handler.mjs en worker/worker.js. Después de modificar esos archivos regenere el Worker antes de desplegar.
+
+Prueba opcional de navegador con Microsoft Edge:
 
 ```text
 npm install --no-save --package-lock=false playwright
 node scripts/browser-qa.mjs
 ```
 
-Requiere Microsoft Edge instalado. Son 9 comprobaciones bajo una ruta /sieu-shf/, con API separada, mapa por proxy y clave ausente de red/exportaciones del navegador. Datos y clave simulados. qa/github-pages.json documenta la ejecución. La prueba real depende de sus despliegues y su Secret.
+63 pruebas unitarias/contrato y nueve comprobaciones de navegador aprobadas con datos, token y mapa simulados. La biblioteca Geoapify Places de versiones anteriores conserva pruebas aisladas, pero ya no se invoca desde la página ni desde el Worker publicado. Las comprobaciones de producción con el token real son posteriores a su configuración.
 
-Para regenerar el Worker después de cambiar core.mjs o geoapify.mjs:
+Leaflet 1.9.4 se incluye con licencia BSD-2-Clause en vendor/LEAFLET-LICENSE.txt. El mapa muestra atribución a Geoapify y OpenStreetMap.
 
-```text
-npm run build:worker
-```
+## Referencias
 
-No publique node_modules. vendor/leaflet.js y vendor/leaflet.css ya están incluidos; su licencia está en vendor/LEAFLET-LICENSE.txt.
+- https://www.inegi.org.mx/servicios/api_denue.html
+- https://developers.cloudflare.com/workers/configuration/secrets/
+- https://developers.cloudflare.com/workers/platform/pricing/
+- https://www.geoapify.com/pricing/
+- https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
