@@ -5,3 +5,5 @@ CLUES integrado para salud de primer, segundo y tercer nivel y hospitales; DENUE
 Catálogo oficial CLUES septiembre de 2026: 64,586 registros originales, 37,218 elegibles. Filtros y actualización en INTEGRACION-CLUES.md. Ningún candidato se verifica automáticamente y la búsqueda vacía no demuestra ausencia.
 
 Validación: 72 pruebas unitarias y 14 comprobaciones de interfaz, con CLUES real y DENUE/mapa simulados. Secretos existentes sin cambios; CLUES no requiere otra clave.
+
+Página pública comprobada: salud1 (3 candidatos), salud2 (3), salud3 (1), hospital (3 CLUES + 3 DENUE), todas sin errores. Cantidades correspondientes al punto de prueba en Ciudad de México; no son garantías de cobertura para otros inmuebles. La tabla muestra las tres opciones más cercanas del conjunto disponible. Fuente y revisiones conservadas en exportación.

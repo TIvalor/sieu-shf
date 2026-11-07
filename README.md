@@ -69,7 +69,7 @@ npm install --no-save --package-lock=false playwright
 node scripts/browser-qa.mjs
 ```
 
-65 pruebas unitarias/contrato y nueve comprobaciones de navegador aprobadas con datos, token y mapa simulados. La biblioteca Geoapify Places de versiones anteriores conserva pruebas aisladas, pero ya no se invoca desde la página ni desde el Worker publicado. Las comprobaciones de producción con el token real son posteriores a su configuración.
+72 pruebas unitarias/contrato y 14 comprobaciones de navegador aprobadas: CLUES con catálogo oficial real; DENUE y mapa simulados. La biblioteca Geoapify Places de versiones anteriores conserva pruebas aisladas, pero ya no se invoca desde la página ni desde el Worker publicado. También se verificaron las cuatro categorías de salud en la página pública, con cero errores de consulta y sin verificaciones humanas automáticas; véase qa/clues-live.json.
 
 Leaflet 1.9.4 se incluye con licencia BSD-2-Clause en vendor/LEAFLET-LICENSE.txt. El mapa muestra atribución a Geoapify y OpenStreetMap.
 

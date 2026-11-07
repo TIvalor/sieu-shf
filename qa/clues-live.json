@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-07T01:17:10.436Z",
+  "site": "https://tivalor.github.io/sieu-shf/",
+  "header": "CLUES: corte 2026-09 · DENUE: configurado · Mapa: disponible",
+  "outcomes": [
+    {
+      "category": "salud1",
+      "message": "3 candidatos nuevos; 0 consultas con error. La búsqueda no demuestra ausencia. Revise bitácora y candidatos."
+    },
+    {
+      "category": "salud2",
+      "message": "3 candidatos nuevos; 0 consultas con error. La búsqueda no demuestra ausencia. Revise bitácora y candidatos."
+    },
+    {
+      "category": "salud3",
+      "message": "1 candidatos nuevos; 0 consultas con error. La búsqueda no demuestra ausencia. Revise bitácora y candidatos."
+    },
+    {
+      "category": "hospital",
+      "message": "6 candidatos nuevos; 0 consultas con error. La búsqueda no demuestra ausencia. Revise bitácora y candidatos."
+    }
+  ],
+  "cluesCandidates": 10,
+  "denueCandidates": 3,
+  "verified": 0,
+  "errors": []
+}
