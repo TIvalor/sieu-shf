@@ -1,5 +1,7 @@
-# Estado de entrega 0.6.0 — 6 de noviembre de 2026
+# Estado de entrega — 0.7.0
 
-Código preparado y probado: DENUE principal, Geoapify solo mapa y eliminación del bloque público de configuración. Se mantiene la URL real del Worker configurada por el propietario. La activación requiere desplegar worker/worker.js actualizado y guardar DENUE_TOKEN como Secret. GEOAPIFY_API_KEY existente se conserva.
+CLUES integrado para salud de primer, segundo y tercer nivel y hospitales; DENUE complementa hospitales y consulta otros rubros. Tres candidatos cercanos por categoría y ampliación hasta veinte. Geoapify sigue como mapa complementario.
 
-Verificación: 65 pruebas de código y nueve comprobaciones de navegador con datos simulados. El token real no fue leído, configurado ni incluido en esta entrega. Siga CONEXION-DENUE.md para el paso operativo de Cloudflare.
+Catálogo oficial CLUES septiembre de 2026: 64,586 registros originales, 37,218 elegibles. Filtros y actualización en INTEGRACION-CLUES.md. Ningún candidato se verifica automáticamente y la búsqueda vacía no demuestra ausencia.
+
+Validación: 72 pruebas unitarias y 14 comprobaciones de interfaz, con CLUES real y DENUE/mapa simulados. Secretos existentes sin cambios; CLUES no requiere otra clave.

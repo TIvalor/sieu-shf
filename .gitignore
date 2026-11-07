@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+.wrangler/
+*.dpapi
+*.log
+
+data/*.xlsx
+data/clues-raw.json

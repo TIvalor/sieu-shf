@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "cutoff": "2026-09",
+  "source": "https://gobi.salud.gob.mx/historico_clues/ESTABLECIMIENTO_SALUD_202609.xlsx?v=1.1",
+  "downloadPage": "https://gobi.salud.gob.mx/Bases_Clues.html",
+  "builtAt": "2026-11-07T01:07:31.620Z",
+  "columns": [
+    "clues",
+    "name",
+    "institution",
+    "lat",
+    "lon",
+    "level",
+    "type",
+    "typology",
+    "address"
+  ],
+  "filters": "Estatus EN OPERACION; consulta externa u hospitalización; coordenadas dentro de México. Nivel sin especificar no se infiere.",
+  "rawCount": 64586,
+  "discarded": 27368,
+  "total": 37218,
+  "shards": [
+    {
+      "file": "clues-202609-01.json.gz",
+      "count": 317,
+      "sha256": "d1cc9e3cb8f5e189db267cfe0361aadaf67794911cd5b91666c9e0dfcdfca799",
+      "bounds": [
+        19.286563,
+        -102.83827,
+        22.41001,
+        -99.017141
+      ]
+    },
+    {
+      "file": "clues-202609-02.json.gz",
+      "count": 803,
+      "sha256": "8eafdcd0f8c104d32089a134d01378d2fd41ed3da11f38f156a446b20248b3c4",
+      "bounds": [
+        28.0938,
+        -117.1229737,
+        32.7168679,
+        -113.560501
+      ]
+    },
+    {
+      "file": "clues-202609-03.json.gz",
+      "count": 262,
+      "sha256": "2208b66b8da50c6aeec8b77e15395533fd0382797545a6b3f9279315a4d386e1",
+      "bounds": [
+        22.8786066,
+        -115.1881,
+        28.0971,
+        -109.585
+      ]
+    },
+    {
+      "file": "clues-202609-04.json.gz",
+      "count": 322,
+      "sha256": "58d142ef8bf740520bef321d167dcfb65f1f0b0db7365d8b8bb61da2d4b675ff",
+      "bounds": [
+        17.8274806,
+        -101.1663036,
+        20.6933893,
+        -89.171857
+      ]
+    },
+    {
+      "file": "clues-202609-05.json.gz",
+      "count": 667,
+      "sha256": "998cb7da0e8175e241d9da8e6ee7ca8d7eae5c4cf9b2eabaf5ab62e3b0f416df",
+      "bounds": [
+        19.1162,
+        -103.790631,
+        29.94062,
+        -99.875397
+      ]
+    },
+    {
+      "file": "clues-202609-06.json.gz",
+      "count": 233,
+      "sha256": "057067d0e9c5cacc481a44e220edaa014ad55ce24202ffafe034073df66f4693",
+      "bounds": [
+        18.7492325,
+        -104.6809772,
+        19.4779459,
+        -103.5289973
+      ]
+    },
+    {
+      "file": "clues-202609-07.json.gz",
+      "count": 2211,
+      "sha256": "409d629ca2b2703f174f7dfabbd0dc88a5c8692783c965fffbc6595e8bd4a8fb",
+      "bounds": [
+        14.558858,
+        -94.0926854,
+        17.978098,
+        -90.451111
+      ]
+    },
+    {
+      "file": "clues-202609-08.json.gz",
+      "count": 972,
+      "sha256": "0ea63a0ff709103ca3514d579c38c4f49ce45e38cba86adcec32296155291311",
+      "bounds": [
+        16.79947,
+        -110.9430642,
+        31.7815,
+        -99.80678
+      ]
+    },
+    {
+      "file": "clues-202609-09.json.gz",
+      "count": 2949,
+      "sha256": "19f7d106f2976d41e13172f731e5521208f832ecc5e865d272b29ed3911a6b26",
+      "bounds": [
+        19.135638,
+        -105.2215023,
+        20.6388824,
+        -98.9512795
+      ]
+    },
+    {
+      "file": "clues-202609-10.json.gz",
+      "count": 745,
+      "sha256": "1546080a9f0701dcc4475642d618def97474ff03dbb4fe67fb8479fd2784c528",
+      "bounds": [
+        22.4316307,
+        -107.1164715,
+        26.6969444,
+        -102.493
+      ]
+    },
+    {
+      "file": "clues-202609-11.json.gz",
+      "count": 1332,
+      "sha256": "05dda0d5687c3769a166d2d08fea32ce243ec7caa98b2186de2835441247bb2b",
+      "bounds": [
+        19.9528,
+        -102.72235,
+        21.798677,
+        -99.719715
+      ]
+    },
+    {
+      "file": "clues-202609-12.json.gz",
+      "count": 1428,
+      "sha256": "e7e197a163adff9442e3951e7f16bfbffac6c2bfa3ef129b97190b656b868d78",
+      "bounds": [
+        16.326498,
+        -102.177717,
+        18.78252,
+        -98.112246
+      ]
+    },
+    {
+      "file": "clues-202609-13.json.gz",
+      "count": 1215,
+      "sha256": "8b3e6ad753f128cd7dac1fafecb48a7bdd9ee1c0e8aa4737d013f99a3fc0a3e5",
+      "bounds": [
+        19.611848,
+        -99.8254102,
+        21.375726,
+        -98.0211293
+      ]
+    },
+    {
+      "file": "clues-202609-14.json.gz",
+      "count": 1855,
+      "sha256": "8b8c837f2fc2cf89df50055d5513f9a7517c3aa2af958e1e1aed95bd9abb425c",
+      "bounds": [
+        18.983323,
+        -105.47962,
+        22.687359,
+        -101.5887183
+      ]
+    },
+    {
+      "file": "clues-202609-15.json.gz",
+      "count": 2960,
+      "sha256": "b1be9ad65fc84201f6230ab3d3c8558aa2708a591786edc982c75a462059ee26",
+      "bounds": [
+        18.15,
+        -100.579096,
+        20.251978,
+        -98.183038
+      ]
+    },
+    {
+      "file": "clues-202609-16.json.gz",
+      "count": 1623,
+      "sha256": "ebc854c4fb7ab2f547cd2483e137b2f01b2f49757fbf07456dfc802b3860bf21",
+      "bounds": [
+        17.476755,
+        -112.172144,
+        31.330958,
+        -91.425197
+      ]
+    },
+    {
+      "file": "clues-202609-17.json.gz",
+      "count": 667,
+      "sha256": "7ccb5ca2c5d8a440ea6f2bbbcc73581aa4f9d2c12764f832c8dbb675b8fdbbd5",
+      "bounds": [
+        18.4256,
+        -101.2052707,
+        26.082,
+        -97.46833
+      ]
+    },
+    {
+      "file": "clues-202609-18.json.gz",
+      "count": 608,
+      "sha256": "56f9aba3b95d98275584a0df889b5813c89bb399a17a5eebae3161deea7c0042",
+      "bounds": [
+        20.677237,
+        -105.68477,
+        26.0284,
+        -97.85484
+      ]
+    },
+    {
+      "file": "clues-202609-19.json.gz",
+      "count": 1415,
+      "sha256": "cb265405bd9667fadef36838fbd8bc705915b31b0cb0ae5bee1ac129f9b10af2",
+      "bounds": [
+        17.907917,
+        -101.108706,
+        27.7029,
+        -94.091941
+      ]
+    },
+    {
+      "file": "clues-202609-20.json.gz",
+      "count": 2017,
+      "sha256": "1a64285f5f25ec059464b26f75707d71724a2a52002773149ca5ffd67147bcc4",
+      "bounds": [
+        15.6624546,
+        -102.98904,
+        23.17988,
+        -89.66247
+      ]
+    },
+    {
+      "file": "clues-202609-21.json.gz",
+      "count": 2115,
+      "sha256": "c9b8ad9415e75a60fc9e4c6fb9dd04fd1067f9a15efe8a4ea5b0a134bb52486d",
+      "bounds": [
+        17.9140193,
+        -117.03745,
+        32.63328,
+        -90.49393
+      ]
+    },
+    {
+      "file": "clues-202609-22.json.gz",
+      "count": 608,
+      "sha256": "e43f91a4d60c9a2ec32a2c8ba6aa9231ffb3c7a02e8147f5dfed83672a669ba5",
+      "bounds": [
+        20.0419,
+        -103.4154,
+        27.93801,
+        -99.055051
+      ]
+    },
+    {
+      "file": "clues-202609-23.json.gz",
+      "count": 665,
+      "sha256": "d5ccfb50cbc3f4724b8babc917eb136b6a22721998e8dd9d534a17cebad0d5bc",
+      "bounds": [
+        14.89905,
+        -106.8722,
+        28.73555,
+        -86.727074
+      ]
+    },
+    {
+      "file": "clues-202609-24.json.gz",
+      "count": 895,
+      "sha256": "c140488821cc3cc43962e18664aeb21eec430a61fd3e6e0bec2ad0e2c9ae91dc",
+      "bounds": [
+        19.33488,
+        -105.46438,
+        28.16608,
+        -98.3672
+      ]
+    },
+    {
+      "file": "clues-202609-25.json.gz",
+      "count": 986,
+      "sha256": "0524b5a866ac3590d0d541a9e5afcfd676f903e4ecddc6da16331d2352666de9",
+      "bounds": [
+        19.25068,
+        -109.338,
+        26.923611,
+        -98.996347
+      ]
+    },
+    {
+      "file": "clues-202609-26.json.gz",
+      "count": 876,
+      "sha256": "c25af9a1871a539ddc8e0214a49d44388bcff75b4c9eb24ce1c658f13a9e5c53",
+      "bounds": [
+        19.2328,
+        -115.004,
+        32.483422,
+        -99.1194
+      ]
+    },
+    {
+      "file": "clues-202609-27.json.gz",
+      "count": 1069,
+      "sha256": "e9f5c7b1af989601ad49e18376c9eef8035f02b89e3dc72c31e4d9c3990ffad1",
+      "bounds": [
+        17.2564,
+        -104.6622,
+        24.00776,
+        -91.00867
+      ]
+    },
+    {
+      "file": "clues-202609-28.json.gz",
+      "count": 1172,
+      "sha256": "71a99cae7d90dda6cb9cec1d771a3ca6a323018a98a344c449739e6917334585",
+      "bounds": [
+        16.01064,
+        -105.36854,
+        27.517399,
+        -95.879641
+      ]
+    },
+    {
+      "file": "clues-202609-29.json.gz",
+      "count": 378,
+      "sha256": "921cbab50991d42407c9a0a47013b1f10624f80e95387f46c620014a85d8b310",
+      "bounds": [
+        18.20205,
+        -99.05835,
+        20.17515,
+        -97.6474589
+      ]
+    },
+    {
+      "file": "clues-202609-30.json.gz",
+      "count": 2458,
+      "sha256": "7efa325a773995a1940367ff4288eabcd11cd5d2506ee178bb0abb411a986278",
+      "bounds": [
+        17.1661,
+        -98.79271,
+        22.39201,
+        -92.89731
+      ]
+    },
+    {
+      "file": "clues-202609-31.json.gz",
+      "count": 672,
+      "sha256": "ce1c18f45949ed88105fc12d4f5a4e62de39c8d349c22f03a6c91c52de04a92c",
+      "bounds": [
+        17.91324,
+        -99.17962,
+        25.9918,
+        -87.5614366
+      ]
+    },
+    {
+      "file": "clues-202609-32.json.gz",
+      "count": 723,
+      "sha256": "2b43cda2055142f338f489ee75de780850289a00596fd70cdd637f1b91bca653",
+      "bounds": [
+        20.6901,
+        -104.215227,
+        24.9869667,
+        -88.15011
+      ]
+    }
+  ]
+}

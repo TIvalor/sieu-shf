@@ -1,10 +1,10 @@
-# SIEU-SHF — DENUE principal y mapa Geoapify
+# SIEU-SHF — CLUES para salud, DENUE y mapa Geoapify
 
-Versión 0.6.0. Aplicación pública de equipamiento urbano para avalúos de vivienda, alojada en GitHub Pages y conectada a Cloudflare Workers Free. Sin Google Cloud, Google Maps, Firebase ni dependencia de Sites.
+Versión 0.7.0. Aplicación pública de equipamiento urbano para avalúos de vivienda, alojada en GitHub Pages y conectada a Cloudflare Workers Free. Sin Google Cloud, Google Maps, Firebase ni dependencia de Sites.
 
 ## Comportamiento publicado
 
-- INEGI DENUE es la fuente principal de candidatos. 13 conceptos tienen consulta textual configurada; nueve requieren fuente específica o carga/captura manual.
+- CLUES es la fuente principal para salud1, salud2, salud3 y hospital. DENUE complementa hospitales y consulta los demás rubros compatibles; seis conceptos requieren fuente específica o captura manual.
 - Geoapify sirve únicamente el mapa complementario OpenStreetMap. No se utiliza su búsqueda Places en el flujo publicado.
 - El bloque de configuración Geoapify se retiró del HTML; los visitantes no introducen claves ni ven instrucciones de alojamiento.
 - Tres opciones cercanas por categoría, expansión hasta veinte, radios 2 km general y 800 m transporte.
@@ -80,3 +80,11 @@ Leaflet 1.9.4 se incluye con licencia BSD-2-Clause en vendor/LEAFLET-LICENSE.txt
 - https://developers.cloudflare.com/workers/platform/pricing/
 - https://www.geoapify.com/pricing/
 - https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
+
+## Catálogo oficial CLUES
+
+Consulte [INTEGRACION-CLUES.md](INTEGRACION-CLUES.md). Corte septiembre de 2026: 64,586 registros originales; 37,218 establecimientos elegibles en 32 entidades. Se usan solo consulta externa u hospitalización, estatus EN OPERACION y coordenadas válidas en México. El nivel se toma del campo oficial; valores no especificados no se infieren. El estado del catálogo no demuestra operación actual.
+
+Los archivos comprimidos de data/ se consultan desde GitHub Pages sin clave adicional ni consumo del Worker. Se cargan todas las entidades cuyos límites intersectan el radio de 2 km, incluidas zonas fronterizas entre entidades. Se comprueba SHA-256 antes de descomprimir. Una descarga fallida se muestra como error y no se interpreta como ausencia. Requiere navegador moderno con DecompressionStream y HTTPS.
+
+Pruebas: npm test (72 pruebas). Prueba de interfaz: node scripts/browser-qa.mjs. Reconstrucción Worker: npm run build:worker.
