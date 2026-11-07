@@ -69,7 +69,7 @@ npm install --no-save --package-lock=false playwright
 node scripts/browser-qa.mjs
 ```
 
-63 pruebas unitarias/contrato y nueve comprobaciones de navegador aprobadas con datos, token y mapa simulados. La biblioteca Geoapify Places de versiones anteriores conserva pruebas aisladas, pero ya no se invoca desde la página ni desde el Worker publicado. Las comprobaciones de producción con el token real son posteriores a su configuración.
+65 pruebas unitarias/contrato y nueve comprobaciones de navegador aprobadas con datos, token y mapa simulados. La biblioteca Geoapify Places de versiones anteriores conserva pruebas aisladas, pero ya no se invoca desde la página ni desde el Worker publicado. Las comprobaciones de producción con el token real son posteriores a su configuración.
 
 Leaflet 1.9.4 se incluye con licencia BSD-2-Clause en vendor/LEAFLET-LICENSE.txt. El mapa muestra atribución a Geoapify y OpenStreetMap.
 
