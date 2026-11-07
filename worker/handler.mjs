@@ -1,7 +1,7 @@
 // Se une a core.mjs y worker/denue.mjs mediante scripts/build-worker.mjs.
 export function createWorker(fetcher=fetch,{clock=()=>Date.now(),pause=ms=>new Promise(resolve=>setTimeout(resolve,ms))}={}){
 const limits=new Map(),placeCache=new Map();let nextSlot=0;
-const throttle=async()=>{const now=clock(),at=Math.max(now,nextSlot);if(at-now>2500)return false;nextSlot=at+220;if(at>now)await pause(at-now);return true;};
+const throttle=async()=>{const now=clock(),at=Math.max(now,nextSlot);if(at-now>10000)return false;nextSlot=at+220;if(at>now)await pause(at-now);return true;};
 return {async fetch(request,env,ctx={}){
 const url=new URL(request.url),origin=request.headers.get('Origin');const allowed=String(env.ALLOWED_ORIGINS||'').split(',').map(x=>x.trim()).filter(Boolean);const accepted=!!origin&&allowed.includes(origin);
 const cors={'Vary':'Origin','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...(accepted?{'Access-Control-Allow-Origin':origin}: {})};const json=(status,data)=>new Response(JSON.stringify(data),{status,headers:{...cors,'Content-Type':'application/json; charset=utf-8'}});
