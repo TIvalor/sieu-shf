@@ -96,3 +96,15 @@ Indique el responsable una vez. En Validación rápida elija un candidato y puls
 Descargar Excel para captura genera un XLSX nativo: Captura contiene Categoría, Existencia y Distancia (m), con 22 filas, filtro, encabezado fijo y selector Existe/No existe. Pendientes y conflictos dejan la existencia vacía, y la distancia queda vacía para ausencia o pendientes; cero se reserva para distancia cero real. Evidencia conserva el elemento elegido y procedencia. Instrucciones identifica inmueble, uso y límites. Copiar resumen para captura permite pegar las mismas tres columnas en otros sistemas. Las ediciones hechas en Excel no se reimportan como verificadas.
 
 Validación: 76 pruebas unitarias y comprobaciones de navegador de elección de candidato, ausencia confirmada, retirada de revisión y descarga XLSX.
+
+## Versión 0.9.0: revisión por grupos y distancia declarada
+
+Categorías agrupadas en comunidad y espacios públicos, educación, salud, comercio y servicios, deporte y transporte. Cada fila permite indicar una distancia manual sin nombre ni coordenadas, identificada como declaración del valuador. Se acepta de 0 a 2,000 m en general y de 0 a 800 m para transporte. No se inventan POI para estas distancias.
+
+Transporte urbano y suburbano incluyen frecuencia estimada de paso positiva en minutos. Locales comerciales incluye cantidad entera positiva en la franja [distancia -100, distancia +100] m, recortada al radio 2 km. El botón de conteo propone el número de registros encontrados en esa franja; el valuador confirma o corrige el número de locales físicos. Los registros DENUE pueden no equivaler a locales físicos únicos y la consulta textual no garantiza cobertura exhaustiva.
+
+Comercio conserva todos los resultados válidos devueltos por la consulta, sin recorte a tres o veinte. El resto mantiene sus límites. Excel y copiar resumen agregan frecuencia y cantidad, con celdas vacías fuera de las categorías correspondientes.
+
+El mapa se vuelve flotante al desplazar la página, con botón para desactivarlo. Al pulsar una fila sus POI se resaltan en violeta y los otros permanecen atenuados.
+
+Pruebas: 79 unitarias.

@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-07T01:10:27.242Z",
-  "passed": 14,
+  "at": "2026-11-09T17:10:07.510Z",
+  "passed": 22,
   "checks": [
     "Funciona bajo /sieu-shf/ como GitHub Pages",
     "API separada con CORS",
@@ -15,8 +15,16 @@
     "Clave ausente de peticiones del navegador y exportación",
     "Sin peticiones a Google ni Sites",
     "Recarga mantiene CLUES y DENUE disponibles",
-    "Móvil sin desbordamiento ni errores JS"
+    "Móvil sin desbordamiento ni errores JS",
+    "Valida una opción elegida desde su categoría",
+    "Descarga Excel nativo de captura",
+    "Ausencia exige confirmación y puede dejarse pendiente",
+    "Distancia manual transporte acepta 800 y rechaza 801 m",
+    "Frecuencia exclusiva de transporte",
+    "Comercio conserva 35 resultados y conteo corregible",
+    "Fila resalta POI en violeta",
+    "Mapa flotante acompaña desplazamiento"
   ],
   "note": "CLUES probado con catálogo oficial real; DENUE y mapa por proxy con datos y claves ficticios. Ninguna revisión generada por esta prueba constituye verificación real.",
-  "upstreamCalls": 20
+  "upstreamCalls": 9
 }
