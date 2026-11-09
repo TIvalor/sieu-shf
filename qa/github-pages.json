@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-09T17:33:02.324Z",
-  "passed": 25,
+  "at": "2026-11-09T18:10:41.789Z",
+  "passed": 28,
   "checks": [
     "Funciona bajo /sieu-shf/ como GitHub Pages",
     "API separada con CORS",
@@ -26,7 +26,10 @@
     "Mapa flotante acompaña desplazamiento",
     "Maximizar y minimizar conserva desplazamiento",
     "Geoapify completa solo no localizados con tres resultados",
-    "Franja comercial configurable"
+    "Franja comercial configurable",
+    "22 ayudas accesibles con origen identificado",
+    "Validar comercios exige franja explícita",
+    "Listas con scroll, claves solo del seleccionado y leyenda persistente"
   ],
   "note": "CLUES probado con catálogo oficial real; DENUE y mapa por proxy con datos y claves ficticios. Ninguna revisión generada por esta prueba constituye verificación real.",
   "upstreamCalls": 28

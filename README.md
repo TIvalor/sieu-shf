@@ -120,3 +120,13 @@ El Worker aplica CORS, caché independiente por proveedor, ritmo y cuota, y no p
 Comercio: indicar distancia central (0 a 2,000 m) y franja a cada lado (± 0 a 2,000 m). El conteo abarca [distancia-franja, distancia+franja], recortado al radio de 2,000 m. El ancho inicial es ±100 m. JSON, Excel y resumen copiable conservan distancia central, cantidad y franja elegida. El conteo sugerido de registros no certifica locales físicos únicos.
 
 Pruebas: 81 unitarias y 25 comprobaciones de navegador.
+
+## Versión 0.11.0: identificación y revisión compacta
+
+Los 22 conceptos muestran un botón de información i, accesible con mouse, foco de teclado o pulsación en móvil. Las descripciones son orientaciones operativas del proyecto. El criterio SHF de transporte y distancia de abordaje se distingue y enlaza a la modificación de metodología de 24/02/2012, apartado 2.9. No se presentan las 22 orientaciones como definiciones oficiales de SHF ni se certifica la vigencia normativa completa. No se verificó una definición individual SHF para cada rubro.
+
+Cada fila tiene lista de candidatos con desplazamiento interno (altura máxima 220 px). Se muestran nombre, distancia y fuente; las claves y referencias solo aparecen en el panel del candidato seleccionado. Seleccionar un candidato no lo verifica. Los bordes de color indican revisión pendiente o verificada; los estados también tienen nombre accesible y una leyenda persistente. Los detalles permanecen disponibles en Editar detalles.
+
+Comercios exige cantidad, distancia central y franja capturada por el revisor al pulsar Validar: Existe o Validar distancia manual. No hay valor predeterminado de 100 m en la validación, el campo inicia vacío y el valor capturado se conserva en JSON y Excel. La validación no modifica la franja por la distancia del POI.
+
+Pruebas: 83 unitarias y 28 comprobaciones de navegador.
