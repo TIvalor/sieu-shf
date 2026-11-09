@@ -1,0 +1,38 @@
+name: Publicar SIEU-SHF
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: sieu-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Obtener proyecto
+        uses: actions/checkout@v6
+      - name: Verificar reglas y exportacion
+        run: node --test test/*.test.mjs
+      - name: Preparar sitio estatico
+        run: |
+          mkdir -p _site
+          cp index.html app.mjs core.mjs review.mjs excel.mjs geoapify.mjs clues.mjs concept-help.mjs gps.mjs map-view.mjs style.css config.js version.json .nojekyll _site/
+          cp -R vendor data _site/
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+      - name: Cargar sitio
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Publicar sitio
+        id: deployment
+        uses: actions/deploy-pages@v4
