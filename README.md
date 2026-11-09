@@ -5,7 +5,7 @@ Versión 0.7.0. Aplicación pública de equipamiento urbano para avalúos de viv
 ## Comportamiento publicado
 
 - CLUES es la fuente principal para salud1, salud2, salud3 y hospital. DENUE complementa hospitales y consulta los demás rubros compatibles; seis conceptos requieren fuente específica o captura manual.
-- Geoapify sirve únicamente el mapa complementario OpenStreetMap. No se utiliza su búsqueda Places en el flujo publicado.
+- Geoapify sirve el mapa OpenStreetMap y complementa exclusivamente categorías no localizadas, con hasta tres candidatos pendientes de revisión.
 - El bloque de configuración Geoapify se retiró del HTML; los visitantes no introducen claves ni ven instrucciones de alojamiento.
 - Tres opciones cercanas por categoría, expansión hasta veinte, radios 2 km general y 800 m transporte.
 - Fuente, ID, CLEE, fecha, distancia y revisión humana. Los resultados vacíos y errores no se interpretan como inexistencia.
@@ -69,7 +69,7 @@ npm install --no-save --package-lock=false playwright
 node scripts/browser-qa.mjs
 ```
 
-72 pruebas unitarias/contrato y 14 comprobaciones de navegador aprobadas: CLUES con catálogo oficial real; DENUE y mapa simulados. La biblioteca Geoapify Places de versiones anteriores conserva pruebas aisladas, pero ya no se invoca desde la página ni desde el Worker publicado. También se verificaron las cuatro categorías de salud en la página pública, con cero errores de consulta y sin verificaciones humanas automáticas; véase qa/clues-live.json.
+72 pruebas unitarias/contrato y 14 comprobaciones de navegador aprobadas: CLUES con catálogo oficial real; DENUE y mapa simulados. Geoapify Places se utiliza como respaldo de categorías compatibles sin hallazgos previos. También se verificaron las cuatro categorías de salud en la página pública, con cero errores de consulta y sin verificaciones humanas automáticas; véase qa/clues-live.json.
 
 Leaflet 1.9.4 se incluye con licencia BSD-2-Clause en vendor/LEAFLET-LICENSE.txt. El mapa muestra atribución a Geoapify y OpenStreetMap.
 
@@ -108,3 +108,15 @@ Comercio conserva todos los resultados válidos devueltos por la consulta, sin r
 El mapa se vuelve flotante al desplazar la página, con botón para desactivarlo. Al pulsar una fila sus POI se resaltan en violeta y los otros permanecen atenuados.
 
 Pruebas: 79 unitarias.
+
+## Versión 0.10.0: mapa ampliable y respaldo cartográfico
+
+Maximizar mapa amplía el visor desde su posición flotante o inicial. Minimizar mapa o Escape restablecen la posición de revisión; se conserva el centro y el zoom.
+
+Completar no localizados con Geoapify está activado inicialmente y puede desmarcarse. DENUE y CLUES conservan prioridad. Solo si la categoría sigue No localizado se consulta Geoapify Places mediante el Worker y su secreto existente GEOAPIFY_API_KEY. También hay un botón por fila para categorías compatibles sin candidatos. El respaldo siempre solicita y devuelve como máximo tres, incluido comercio, independientemente del límite de DENUE. Candidatos o ausencias verificadas bloquean ese respaldo. No se deducen niveles de atención ni equivalencias exactas de escuelas o transporte a partir de la categoría amplia de OpenStreetMap. Las categorías sin correspondencia cartográfica suficiente conservan la captura manual.
+
+El Worker aplica CORS, caché independiente por proveedor, ritmo y cuota, y no publica la clave. Fuente API: https://apidocs.geoapify.com/docs/places/ . Una búsqueda vacía no demuestra ausencia y cada candidato requiere revisión humana.
+
+Comercio: indicar distancia central (0 a 2,000 m) y franja a cada lado (± 0 a 2,000 m). El conteo abarca [distancia-franja, distancia+franja], recortado al radio de 2,000 m. El ancho inicial es ±100 m. JSON, Excel y resumen copiable conservan distancia central, cantidad y franja elegida. El conteo sugerido de registros no certifica locales físicos únicos.
+
+Pruebas: 81 unitarias y 25 comprobaciones de navegador.
