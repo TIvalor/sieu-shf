@@ -88,3 +88,11 @@ Consulte [INTEGRACION-CLUES.md](INTEGRACION-CLUES.md). Corte septiembre de 2026:
 Los archivos comprimidos de data/ se consultan desde GitHub Pages sin clave adicional ni consumo del Worker. Se cargan todas las entidades cuyos límites intersectan el radio de 2 km, incluidas zonas fronterizas entre entidades. Se comprueba SHA-256 antes de descomprimir. Una descarga fallida se muestra como error y no se interpreta como ausencia. Requiere navegador moderno con DecompressionStream y HTTPS.
 
 Pruebas: npm test (72 pruebas). Prueba de interfaz: node scripts/browser-qa.mjs. Reconstrucción Worker: npm run build:worker.
+
+## Versión 0.8.0: captura y revisión ágil
+
+Indique el responsable una vez. En Validación rápida elija un candidato y pulse Validar: Existe. La fuente, referencia, fecha y método estándar se conservan automáticamente. Puede elegir otra opción o Dejar pendiente. No existe requiere una explicación breve de cómo comprobó la ausencia en todo el radio. No se infiere de consultas vacías. La revisión detallada permanece disponible; sus campos adicionales son opcionales para candidatos encontrados.
+
+Descargar Excel para captura genera un XLSX nativo: Captura contiene Categoría, Existencia y Distancia (m), con 22 filas, filtro, encabezado fijo y selector Existe/No existe. Pendientes y conflictos dejan la existencia vacía, y la distancia queda vacía para ausencia o pendientes; cero se reserva para distancia cero real. Evidencia conserva el elemento elegido y procedencia. Instrucciones identifica inmueble, uso y límites. Copiar resumen para captura permite pegar las mismas tres columnas en otros sistemas. Las ediciones hechas en Excel no se reimportan como verificadas.
+
+Validación: 76 pruebas unitarias y comprobaciones de navegador de elección de candidato, ausencia confirmada, retirada de revisión y descarga XLSX.

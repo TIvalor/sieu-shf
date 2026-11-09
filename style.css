@@ -5,3 +5,5 @@
 
 .geo-controls{display:flex;flex-wrap:wrap;align-items:end;gap:10px}.geo-controls label{flex:1;min-width:220px;margin:0}.geo-controls button{margin-bottom:0}.geo-config p{font-size:12px}#geo-map{height:420px;min-height:300px;background:#e7eee6;border-radius:6px;z-index:0}.attribution{font-size:11px}.attribution a{color:#255b4c}.leaflet-popup-content button{padding:6px}.leaflet-container{font-family:Segoe UI,Arial,sans-serif}.map-panel{margin-bottom:24px}@media(max-width:760px){#geo-map{height:330px}.geo-controls{align-items:stretch}.geo-controls label{flex-basis:100%}}@media print{.geo-config{display:none}#geo-map{height:300px}.map-panel button{display:none}}
 [hidden]{display:none!important}
+
+#rows td:last-child{min-width:210px}#rows td:last-child select{max-width:280px}#rows td:last-child button{display:block;margin:7px 0;width:100%}
