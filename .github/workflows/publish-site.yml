@@ -25,8 +25,9 @@ jobs:
       - name: Preparar sitio estatico
         run: |
           mkdir -p _site
-          cp index.html app.mjs core.mjs review.mjs excel.mjs geoapify.mjs clues.mjs concept-help.mjs gps.mjs map-view.mjs style.css config.js version.json .nojekyll _site/
+          cp index.html app.mjs core.mjs review.mjs excel.mjs geoapify.mjs clues.mjs concept-help.mjs gps.mjs map-view.mjs style.css config.js version.json _site/
           cp -R vendor data _site/
+          touch _site/.nojekyll
       - name: Configurar Pages
         uses: actions/configure-pages@v5
       - name: Cargar sitio
