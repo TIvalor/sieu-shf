@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-09T17:10:07.510Z",
+  "at": "2026-11-09T17:14:40.907Z",
   "passed": 22,
   "checks": [
     "Funciona bajo /sieu-shf/ como GitHub Pages",
@@ -26,5 +26,5 @@
     "Mapa flotante acompaña desplazamiento"
   ],
   "note": "CLUES probado con catálogo oficial real; DENUE y mapa por proxy con datos y claves ficticios. Ninguna revisión generada por esta prueba constituye verificación real.",
-  "upstreamCalls": 9
+  "upstreamCalls": 7
 }
