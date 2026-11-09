@@ -130,3 +130,7 @@ Cada fila tiene lista de candidatos con desplazamiento interno (altura máxima 2
 Comercios exige cantidad, distancia central y franja capturada por el revisor al pulsar Validar: Existe o Validar distancia manual. No hay valor predeterminado de 100 m en la validación, el campo inicia vacío y el valor capturado se conserva en JSON y Excel. La validación no modifica la franja por la distancia del POI.
 
 Pruebas: 83 unitarias y 28 comprobaciones de navegador.
+
+## Publicación 0.11.1
+
+El flujo explícito .github/workflows/publish-site.yml verifica pruebas, prepara únicamente los archivos públicos y despliega mediante las acciones oficiales de Pages. Los archivos frontend llevan versión en sus URL para evitar que el navegador mezcle módulos antiguos con el HTML actualizado. La cabecera muestra la versión publicada.

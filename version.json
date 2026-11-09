@@ -1,11 +1,10 @@
 {
-  "version": "0.11.0",
+  "version": "0.11.1",
   "releaseDate": "2026-11-09",
-  "implementationCommit": "d4ba9c5e2879f3457b58424a58e63a35a58441c0",
   "features": [
-    "Ayudas de identificación por concepto",
-    "Franja comercial obligatoria capturada por el revisor",
-    "Listas compactas con claves solo del seleccionado",
-    "Leyenda de revisión persistente"
+    "22 ayudas de identificación",
+    "Franja comercial obligatoria",
+    "Listas compactas",
+    "Leyenda persistente"
   ]
 }

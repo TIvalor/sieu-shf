@@ -1,4 +1,4 @@
-import {CATALOG,coords,distance} from './core.mjs';
+import {CATALOG,coords,distance} from './core.mjs?v=0.11.1';
 export const HEALTH_CONCEPTS=['salud1','salud2','salud3','hospital'];
 export function selectClues(rows,point,conceptId,{limit=3,metadata}={}){
  coords(point);if(!HEALTH_CONCEPTS.includes(conceptId)||![3,20].includes(limit))throw Error('Consulta CLUES inválida.');

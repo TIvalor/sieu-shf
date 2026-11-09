@@ -1,4 +1,4 @@
-import {CATALOG,result,rankedCandidates,recordDistance} from './core.mjs';
+import {CATALOG,result,rankedCandidates,recordDistance} from './core.mjs?v=0.11.1';
 export function quickReview(state,conceptId,{recordId,absent=false,reviewer,scope='',frequencyMinutes,count,bandWidth,countDistance,at=new Date().toISOString()}={}){
  const c=CATALOG.find(c=>c.id===conceptId);if(!c||!reviewer?.trim())throw Error('Indique el responsable una sola vez antes de validar.');
  let r;if(absent){if(!scope.trim())throw Error('Indique cómo comprobó la ausencia dentro del radio.');r={id:crypto.randomUUID(),concept:c.id,absent:true,source:'Comprobación del valuador',reference:'Declaración de ausencia: '+at,scope:scope.trim(),demo:state.demo===true};}

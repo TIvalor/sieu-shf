@@ -1,11 +1,11 @@
-import {CONCEPT_HELP} from './concept-help.mjs';
-import {GEO_CATEGORIES} from './geoapify.mjs';
-import {quickReview,captureRows,manualDistanceReview,validateManualDistance,commerceBand,validateBandWidth} from './review.mjs';
-import {excelBlob} from './excel.mjs';
-import {createCluesClient,HEALTH_CONCEPTS} from './clues.mjs';
-import {startMap,updateMap} from './map-view.mjs';
-import {gpsFix} from './gps.mjs';
-import {CATALOG,blank,coords,result,rankedCandidates,proposal,importRecords,parseCSV,csv,report,demo,evidence,validatePolicy} from './core.mjs';
+import {CONCEPT_HELP} from './concept-help.mjs?v=0.11.1';
+import {GEO_CATEGORIES} from './geoapify.mjs?v=0.11.1';
+import {quickReview,captureRows,manualDistanceReview,validateManualDistance,commerceBand,validateBandWidth} from './review.mjs?v=0.11.1';
+import {excelBlob} from './excel.mjs?v=0.11.1';
+import {createCluesClient,HEALTH_CONCEPTS} from './clues.mjs?v=0.11.1';
+import {startMap,updateMap} from './map-view.mjs?v=0.11.1';
+import {gpsFix} from './gps.mjs?v=0.11.1';
+import {CATALOG,blank,coords,result,rankedCandidates,proposal,importRecords,parseCSV,csv,report,demo,evidence,validatePolicy} from './core.mjs?v=0.11.1';
 const $=id=>document.getElementById(id);const apiBase=String(window.SIEU_CONFIG?.apiBase||'').replace(/\/+$/,'');
 async function apiFetch(path,options){if(!apiBase){if(path==='/api/config')return new Response(JSON.stringify({denueConfigured:false,geoapifyConfigured:false}),{headers:{'Content-Type':'application/json'}});throw Error('Configure la URL del Worker en config.js. No se requieren claves en el repositorio.');}const target=new URL(apiBase);if(target.protocol!=='https:'&&!['127.0.0.1','localhost'].includes(target.hostname))throw Error('La API debe usar HTTPS.');return fetch(apiBase+path,options);}
 const clues=createCluesClient();let cluesMeta=null;
